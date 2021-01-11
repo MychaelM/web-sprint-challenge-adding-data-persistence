@@ -18,5 +18,6 @@ async function add(resource) {
 
 module.exports = {
   find,
+  findByID,
   add,
 };
