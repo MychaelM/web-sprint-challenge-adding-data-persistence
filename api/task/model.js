@@ -30,8 +30,20 @@ async function find() {
   return updatedTasks;
 }
 
-function findByID(id) {
-  return db("tasks").where("id", id).first();
+ async function findByID(id) {
+  const task = await db("tasks").where("id", id).first();
+
+  if (task.is_completed === 1) {
+    return {
+      ...task,
+      is_completed: true
+    }
+  } else {
+    return {
+      ...task,
+      is_completed: false
+    }
+  }
 }
 
 async function add(task) {

@@ -21,9 +21,22 @@ async function find() {
   return updatedProjects
 }
 
-function findByID(id) {
-  return db("projects").where("id", id).first();
-}
+async function findByID(id) {
+  const project = await db("projects").where("id", id).first();
+
+  if (project.project_completed === 1) {
+    return {
+      ...project,
+      project_completed: true
+    }
+    } else {
+      return {
+        ...project,
+        project_completed: false
+      }
+    }
+  }
+
 
 async function add(project) {
   const newProject = await db("projects").insert(project)
