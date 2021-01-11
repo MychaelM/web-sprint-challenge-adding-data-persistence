@@ -3,7 +3,7 @@ const db = require('../../data/dbConfig')
 async function find() {
   const projects = await db("projects")
 
-  console.log(projects)
+  // console.log(projects)
 
   // if (projects[0].project_completed === 1) {
   //   return {
