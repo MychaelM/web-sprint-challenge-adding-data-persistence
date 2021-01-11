@@ -3,6 +3,7 @@ const express = require('express')
 
 const welcome = require('./welcome/welcome-router.js');
 const projectsRouter = require('./project/router')
+const resourcesRouter = require('./resource/router')
 
 
 const server = express();
@@ -11,6 +12,7 @@ const server = express();
 server.use(express.json());
 server.use("/api", welcome);
 server.use("/api/projects", projectsRouter);
+server.use("/api/resources", resourcesRouter)
 
 server.use((err, req, res, next) => {
   console.log(err);
