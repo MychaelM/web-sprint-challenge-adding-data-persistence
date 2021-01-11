@@ -14,20 +14,20 @@ async function find() {
     )
 
 
-  // console.log(tasks);
-
-  // if (tasks[0].project_completed === 1) {
-  //   return {
-  //     ...tasks[0],
-  //     project_completed: true,
-  //   };
-  // } else {
-  //     return {
-  //       ...tasks[0],
-  //       project_completed: false,
-  //     };
-  //   }
-  return tasks;
+  const updatedTasks = tasks.map((task) => {
+    if (task.is_completed === 1) {
+      return {
+        ...task,
+        is_completed: true,
+      };
+    } else {
+      return {
+        ...task,
+        is_completed: false,
+      };
+    }
+  });
+  return updatedTasks;
 }
 
 function findByID(id) {

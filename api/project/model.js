@@ -2,21 +2,23 @@ const db = require('../../data/dbConfig')
 
 async function find() {
   const projects = await db("projects")
+  
+    // console.log(projects)
+  const updatedProjects = projects.map((project) => {
+    if (project.project_completed === 1) {
+      return {
+        ...project,
+        project_completed: true,
+      };
+    } else {
+      return {
+        ...project,
+        project_completed: false,
+      };
+    }
+  });
 
-  // console.log(projects)
-
-  // if (projects[0].project_completed === 1) {
-  //   return {
-  //     ...projects[0],
-  //     project_completed: true,
-  //   };
-  // } else {
-  //     return {
-  //       ...projects[0],
-  //       project_completed: false,
-  //     };
-  //   }
-  return projects
+  return updatedProjects
 }
 
 function findByID(id) {
